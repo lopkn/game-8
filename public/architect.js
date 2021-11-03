@@ -13,6 +13,7 @@ class architect extends entity{
   }
   draw(){
 ArchDraw(this)
+console.log("change")
   }
   
   hidraw(){
