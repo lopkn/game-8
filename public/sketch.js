@@ -489,7 +489,7 @@ socket.on('tckd',kd);
 
 
 
-  createCanvas(880 , 720);
+  createCanvas(880 , 720).position(50,0);
 
 // for(let j = 0; j < rowy; j++){
 // for(let i = 0; i < rowx; i++){
