@@ -75,7 +75,7 @@ function newConnection(socket){
 
 
 	function serSave(packet){
-			console.log(JSON.stringify({"a":packet}))
+			console.log("-'"+JSON.stringify({"a":packet})+"'-")
 			// console.log(packet[0])
 	}
 

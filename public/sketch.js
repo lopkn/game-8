@@ -526,7 +526,7 @@ socket.on('tckd',kd);
   bEsy.mousePressed(SYNC)
   bEsy =createButton('save');
   bEsy.position(newwidth+100,newheight+50)
-  bEsy.mousePressed(saveToSer)
+  bEsy.mousePressed(saveToSer); BD = createButton('decoy'); BD.position(2000,1500)
 }
 
 //start factory
