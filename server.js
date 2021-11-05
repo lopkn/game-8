@@ -19,6 +19,7 @@
 
 
 
+fs = require('fs')
 
 
 
@@ -75,7 +76,12 @@ function newConnection(socket){
 
 
 	function serSave(packet){
-			console.log("-'"+JSON.stringify({"a":packet})+"'-")
+		fs.writeFile("./save", ("-'"+JSON.stringify({"a":packet})+"'-"), function(err) {
+			if(err) {
+				return console.log(err);
+			}
+			console.log("The file was saved!");
+		})
 			// console.log(packet[0])
 	}
 
