@@ -2,6 +2,56 @@
 building_costs = [["mine",200],["architect",250],["factory",400],["soldier",100],["tank",250],["medic",250],["trap",50]]
 
 
+
+
+
+
+
+function abActions(){
+  if(currentlyDoing == 1 && TT.state != "start"){
+  if(selectedBuilding.name == "factory"){
+   l.html(" act1: hire soldier<br> act2: hire architect<br> act3: buy tank<br> act4: hire medic<br> click a tile near the factory after youve bought the unit to build it") 
+  } else if(selectedBuilding.name == "architect"){
+   l.html(" act1: move<br> act2: build factory<br> act3: build mine(only on mountains)<br> act4: build trap<br> click a tile near the architect after youve bought the unit to build it") 
+  } else if(selectedBuilding.name == "soldier"){
+    l.html(" act1: move<br> act2: aim & shoot<br> act3: build/destroy road tiles<br> act4: build trap(more expensive than architect)") 
+  } else if(selectedBuilding.name == "tank"){
+    l.html(" act1: move<br> act2: aim & shoot") 
+  } else if(selectedBuilding.name == "medic"){
+    l.html(" act1: move<br> act2: aim & heal")
+  } else if(selectedBuilding.name == "mine"){
+    l.html(" your mine literally sits there and cant do anything")
+  } else if(selectedBuilding.name == "trap"){
+    l.html(" what, you want to make the trap move and shoot?")
+  }}
+  else if(currentlyDoing == "shooting"){
+    l.html(" click something in range to shoot!")
+  }
+
+  else if(TT.state == "start"){
+    l.html("act1: place down a factory at selected tile")
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function findBuildingDetails(j){
   for(let i = 0; i < building_costs.length; i++){
     if(building_costs[i][0] == j){
@@ -527,6 +577,10 @@ socket.on('tckd',kd);
   bEsy =createButton('save');
   bEsy.position(newwidth+100,newheight+50)
   bEsy.mousePressed(saveToSer); BD = createButton('decoy'); BD.position(2000,1500)
+
+  l = createP("button actions displayed here!\nclick on any act button to join that team.")
+  l.position(50,newheight+50)
+  l.style('color','white')
 }
 
 //start factory
@@ -772,6 +826,13 @@ function update(fupdate,ex,ey){
       }
       
     }
+
+  if(turn == myTeamNum){
+    abActions()
+  } else {
+    l.html("wait for the others to finish thier moves")
+  }
+
   }
 
 clickPing = 0

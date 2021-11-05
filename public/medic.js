@@ -9,7 +9,7 @@ class medic extends entity{
     this.MaxTurns = 4
     this.sight = 5.5
     this.shootdistance = 2
-    this.dmg = [-70,-50]
+    this.dmg = [-50,-30]
   }
   draw(){
     MedicDraw(this)
