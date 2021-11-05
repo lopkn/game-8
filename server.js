@@ -55,7 +55,10 @@ function newConnection(socket){
 	// console.log(started)
 
 	console.log(socket.id + ' has connected')
+
 	io.emit('seed',e)
+	id = socket.id
+	io.emit('conID',id)
 	socket.on('toSer', mouseMSG)
 
 	function start(){

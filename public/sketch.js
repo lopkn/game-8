@@ -526,7 +526,9 @@ function kd(num){
   if(num == 83){kd83()}
   if(num == 68){kd68()}
 }
-
+function messageNEWCON(id){
+  console.log("player id " + id +" has joined!")
+}
 class player{
   constructor(){
   this.id = id}
@@ -560,6 +562,7 @@ function setup() {
   socket.on('toClientClick',toClientUpdate)
   socket.on('BackToClientAction',allbuttons)
   socket.on('toClientSync',clientSYNC)
+  socket.on('conID',messageNEWCON)
 
 socket.on('tckd',kd);
 
