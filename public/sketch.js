@@ -673,7 +673,7 @@ function saveToSer(){
   turnSave = turn
   
 
-  packet = [entitySave,teamSave,stateSave,turnSave,roadTiles]
+  packet = [entitySave,teamSave,stateSave,turnSave,roadTiles()]
   socket.emit('toSerSave',packet)
 }
 
