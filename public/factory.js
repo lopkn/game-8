@@ -4,7 +4,7 @@ class factory extends entity{
     constructor(x,y,team){
       super(x,y,team,'factory');
       this.hp = 300
-      this.moneyGeneration = 25
+      this.moneyGeneration = 35
       this.moveable = false
       this.sight = 5
       this.shootable =false

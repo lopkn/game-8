@@ -3,7 +3,7 @@ class mine extends entity{
     constructor(x,y,team){
       super(x,y,team,'mine');
       this.hp = 70
-      this.moneyGeneration = 17.5
+      this.moneyGeneration = 20
       // this.name = "mine"
       this.sight = 2
       this.moveable = false
