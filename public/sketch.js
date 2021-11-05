@@ -28,7 +28,7 @@ function abActions(){
   else if(currentlyDoing == "shooting"){
     l.html(" click something in range to shoot! press the exit button to exit shooting mode")
   } else if(currentlyDoing == "moving"){
-    l.html(" you're trying to move your unit. click a block directly adjacent to the unit to move.<br> make sure to press the exit button after you're done moving!")
+    l.html(" you're trying to move your unit. click a block directly adjacent to the unit to move.<br> if you have a keyboard, selecting the unit and pressing WASD also moves the unit!<br> make sure to press the exit button after you're done moving!")
   } else if(currentlyDoing == "soldier"){
     l.html(" you're trying to make a soldier. click a tile in a 2 block radius of your factory to build.")
   } else if(currentlyDoing == "mine"){
@@ -49,7 +49,7 @@ function abActions(){
 
 
   else{
-    l.html(" really dosen't look like you're doing anything. please be considerate and think faster")
+    l.html(" really dosen't look like you're doing anything. please be considerate and think faster<br> if you have ran out of things to do, press the end turn button.")
   }
 
 
@@ -472,6 +472,24 @@ TT.state = "game"}
   if(currentlyDoing == "mine"){
     currentlyDoing = 1
     TT.money += 200
+  } else if (currentlyDoing == "soldier"){
+    currentlyDoing = 1
+    TT.money += 95
+  } else if (currentlyDoing == "trap"){
+    currentlyDoing = 1
+    TT.money += 45
+  } else if (currentlyDoing == "medic"){
+    currentlyDoing = 1
+    TT.money += 200
+  } else if (currentlyDoing == "tank"){
+    currentlyDoing = 1
+    TT.money += 200
+  } else if (currentlyDoing == "architect"){
+    currentlyDoing = 1
+    TT.money += 100
+  } else if (currentlyDoing == "factory"){
+    currentlyDoing = 1
+    TT.money += 300
   }
 
 
