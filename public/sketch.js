@@ -8,11 +8,12 @@ building_costs = [["mine",200],["architect",250],["factory",400],["soldier",100]
 
 
 function abActions(){
-  if(currentlyDoing == 1 && TT.state != "start"){
+  let tempc = checkMouseEntities()
+  if(currentlyDoing == 1 && TT.state != "start" && tempc != "no entity" && entities[tempc].team.teamname == TT.teamname){
   if(selectedBuilding.name == "factory"){
-   l.html(" act1: hire soldier<br> act2: hire architect<br> act3: buy tank<br> act4: hire medic<br> click a tile near the factory after youve bought the unit to build it") 
+   l.html(" act1: hire soldier<br> act2: hire architect<br> act3: buy tank<br> act4: hire medic<br> click a tile near the factory after you've bought the unit to build it") 
   } else if(selectedBuilding.name == "architect"){
-   l.html(" act1: move<br> act2: build factory<br> act3: build mine(only on mountains)<br> act4: build trap<br> click a tile near the architect after youve bought the unit to build it") 
+   l.html(" act1: move<br> act2: build factory<br> act3: build mine(only on mountains)<br> act4: build trap<br> click a tile near the architect after you've bought the unit to build it") 
   } else if(selectedBuilding.name == "soldier"){
     l.html(" act1: move<br> act2: aim & shoot<br> act3: build/destroy road tiles<br> act4: build trap(more expensive than architect)") 
   } else if(selectedBuilding.name == "tank"){
@@ -25,13 +26,31 @@ function abActions(){
     l.html(" what, you want to make the trap move and shoot?")
   }}
   else if(currentlyDoing == "shooting"){
-    l.html(" click something in range to shoot!")
+    l.html(" click something in range to shoot! press the exit button to exit shooting mode")
+  } else if(currentlyDoing == "moving"){
+    l.html(" you're trying to move your unit. click a block directly adjacent to the unit to move.<br> make sure to press the exit button after you're done moving!")
+  } else if(currentlyDoing == "soldier"){
+    l.html(" you're trying to make a soldier. click a tile in a 2 block radius of your factory to build.")
+  } else if(currentlyDoing == "mine"){
+    l.html(" you're trying to build a mine. click a tile in a 1 block radius of your architect to build.<br> (the tile has to be a mountain tile)")
+  } else if(currentlyDoing == "tank"){
+    l.html(" you're trying to build a tank. click a tile in a 1 block radius of your factory to build.")
+  } else if(currentlyDoing == "medic"){
+    l.html(" you're trying to make a medic. click a tile in a 2 block radius of your factory to build.")
+  } else if(currentlyDoing == "trap"){
+    l.html(" you're trying to set a trap. click a tile in a 2 block radius of your unit to build.")
+  } else if(currentlyDoing == "architect"){
+    l.html(" you're trying to make an architect. click a tile in a 2 block radius of your factory to build.")
   }
 
   else if(TT.state == "start"){
-    l.html("act1: place down a factory at selected tile")
+    l.html(" act1: place down a factory at selected tile")
   }
 
+
+  else{
+    l.html(" really dosen't look like you're doing anything. please be considerate and think faster")
+  }
 
 
 }
@@ -270,9 +289,6 @@ function checkPosEntities(){
 
 function action1(){
 
-if(started == false){
-  myTeamNum = 0
-} else{
 
   if(TT.state == "start" && cme == "no entity"){
   temp = tiletopos(prevSelectedArea)
@@ -291,7 +307,7 @@ if(started == false){
   } else if(currentlyDoing == 1 && TT.state == "game" && selectedBuilding.team.teamname == TT.teamname && selectedBuilding.name != "factory"){
             TT.state = "moving"
     currentlyDoing = "moving"
-            }}
+            }
 }
 
 
@@ -299,9 +315,7 @@ if(started == false){
 
 
 function action2(ein){
-  if(started == false){
-  myTeamNum = 1
-}else{
+
   if(selectedBuilding.name == "factory" &&TT.state == "building" && currentlyDoing == 1){
    
     if(TT.money >= 250){
@@ -323,14 +337,12 @@ function action2(ein){
     currentlyDoing = "shooting"
     shootingSeed = ein
             }
-          }
+          
 }
 
 function action3(){
 
-if(started == false){
-  myTeamNum = 2
-} else{
+
 
 
 
@@ -363,15 +375,13 @@ if(started == false){
     }
     
   }
-}
+
 
 }
 
 
 function action4(){
-  if(started == false){
-  myTeamNum = 3
-} else{
+
 
   if(selectedBuilding.name == "factory" &&TT.state == "building" && currentlyDoing == 1){
    
@@ -400,7 +410,7 @@ function action4(){
   }
 
 
-}
+
 }
 
 function clientSYNC(syncPacket){
@@ -578,7 +588,7 @@ socket.on('tckd',kd);
   bEsy.position(newwidth+100,newheight+50)
   bEsy.mousePressed(saveToSer); BD = createButton('decoy'); BD.position(2000,1500)
 
-  l = createP("button actions displayed here!\nclick on any act button to join that team.")
+  l = createP("button actions displayed here!\nclick on any act button to join that team, then press start!")
   l.position(50,newheight+50)
   l.style('color','white')
 }
@@ -957,8 +967,11 @@ function cloned(data) {
 }
 
 function allbuttonsemit(toserver){
+  if(started == false && typeof(toserver) == "number"){
+    myTeamNum = toserver -1
+  } else {
   socket.emit('action',toserver)
-  console.log('emiting '+toserver+' to server')
+  console.log('emiting '+toserver+' to server')}
 }
 
 function allbuttons(toclient){
