@@ -535,6 +535,7 @@ class player{
 }
 seeded = false
 function seed(e){
+  if(seeded === false){
   console.log(e)
   noiseSeed(e)
   for(let j = 0; j < rowy; j++){
@@ -543,7 +544,7 @@ for(let i = 0; i < rowx; i++){
   tiles.push(new tile(n+1,i,j))
 }
 }
-seeded = true
+seeded = true}
 }
 
 
@@ -684,7 +685,7 @@ function entitiesDistanceCheck(inEntity){
   for(let i = 0; i < entities.length; i++){
     let curEntity = entities[i]
     if(curEntity.team.teamname == teams[myTeamNum].teamname){
-    if(dist(inEntity.x,inEntity.y,curEntity.x,curEntity.y) < 4 && curEntity.name != "trap"){
+    if(dist(inEntity.x,inEntity.y,curEntity.x,curEntity.y) < curEntity.sight -1 && curEntity.name != "trap"){
       return(true)
     }}
 
