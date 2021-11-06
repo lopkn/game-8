@@ -751,37 +751,38 @@ function update(fupdate,ex,ey){
     //ifbuild
       temp = tiletopos(prevSelectedArea)
     //build units
-    if(fupdate == "soldier" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 2.1 && cme == "no entity"){
+    dit = dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
+    if(fupdate == "soldier" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity"){
       entities.push(new soldier(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
-      if(fupdate == "architect" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 2.1 && cme == "no entity"){
+      if(fupdate == "architect" && thisSelectedArea != null && dit < 2.1 && cme == "no entity"){
       entities.push(new architect(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     } 
-        if(fupdate == "factory" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 1.1 && cme == "no entity"){
+        if(fupdate == "factory" && thisSelectedArea != null && dit < 1.1 && dit != 0 && cme == "no entity"){
       entities.push(new factory(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
-          if(fupdate == "tank" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 1.1 && cme == "no entity"){
+          if(fupdate == "tank" && thisSelectedArea != null && dit < 1.1 && dit != 0 && cme == "no entity"){
       entities.push(new tank(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
-  if(fupdate == "mine" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 1.1 && cme == "no entity" && tiles[temp[0]+temp[1]*newwidth/tsize].name == "mountain"){
+  if(fupdate == "mine" && thisSelectedArea != null && dit < 1.1 && dit != 0 && cme == "no entity" && tiles[temp[0]+temp[1]*newwidth/tsize].name == "mountain"){
       entities.push(new mine(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
-      if(fupdate == "medic" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 2.1 && cme == "no entity" ){
+      if(fupdate == "medic" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity" ){
       entities.push(new medic(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
-    if(fupdate == "trap" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) < 2.1 && cme == "no entity" ){
+    if(fupdate == "trap" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity" ){
       entities.push(new trap(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
@@ -790,7 +791,7 @@ function update(fupdate,ex,ey){
   if(cme != "no entity"){
   if(thisSelectedEntity != "no entity" && thisSelectedEntity != null){
     // console.log(thisSelectedEntity)
-          if(currentlyDoing != 1 &&fupdate == "shooting" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name != "medic" && entities[thisSelectedEntity].team.teamname != TT.teamname && entities[cme].moveTurns > 0 || currentlyDoing != 1 &&fupdate == "shooting" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name == "medic" && entities[thisSelectedEntity].hp < 150 && entities[thisSelectedEntity].team.teamname == TT.teamname && entities[cme].moveTurns > 0){
+          if(currentlyDoing != 1 &&fupdate == "shooting" && thisSelectedArea != null && dit <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name != "medic" && entities[thisSelectedEntity].team.teamname != TT.teamname && entities[cme].moveTurns > 0 || currentlyDoing != 1 &&fupdate == "shooting" && thisSelectedArea != null && dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y) <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name == "medic" && entities[thisSelectedEntity].hp < 150 && entities[thisSelectedEntity].team.teamname == TT.teamname && entities[cme].moveTurns > 0){
       thismany = int(shootingSeed*(entities[cme].dmg[1]-entities[cme].dmg[0]))+entities[cme].dmg[0]
       if(thismany < 0){console.log("healt " +(-thismany)+" hp!")}else{
       console.log("dealt " +thismany+" hp!")}
