@@ -1,7 +1,7 @@
 
 building_costs = [["mine",200],["architect",250],["factory",400],["soldier",100],["tank",250],["medic",250],["trap",50]]
 
-
+p5.disableFriendlyErrors = true;
 
 
 
@@ -90,7 +90,7 @@ function notBuilding(){
   return(true)
 }
 
-needwaittime = 20
+needwaittime = 10
 
 newwidth = 720
 newheight = 720
