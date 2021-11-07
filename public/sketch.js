@@ -752,7 +752,7 @@ function update(fupdate,ex,ey){
       temp = tiletopos(prevSelectedArea)
   //build units
     try {
-     var dit = dist(temOp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
+     var dit = dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
     } catch(error){
     }
     if(fupdate == "soldier" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity"){
