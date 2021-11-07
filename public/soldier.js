@@ -46,7 +46,7 @@ function SoldierHidraw(e){
     noStroke()
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
-    if(myTeamNum == turn){
+    if(myTeamNum == turn && e.team.teamname == TT.teamname){
     text("hp-"+e.hp,newwidth,newheight/2 + 40)
     text("moves-"+e.moveTurns,newwidth,newheight/2 + 60)
     shopdisplay3()
@@ -58,5 +58,6 @@ function SoldierHidraw(e){
 
 function shopdisplay3(){
   let ttx = 100
-  text("trap:100g",newwidth,newheight/2 + ttx)
+  text("road:150g",newwidth,newheight/2 + ttx)
+  text("trap:100g",newwidth,newheight/2 + ttx + 20)
 }

@@ -48,11 +48,12 @@ function FactoryHidraw(e){
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
     }
-    if(myTeamNum == turn){
+    if(e.team.teamname == TT.teamname){
       if(TT.state == "game"){
       TT.state = "building"}
+      if(myTeamNum == turn){
       text("hp-"+e.hp,newwidth,newheight/2 + 40)
-      shopdisplay()
+      shopdisplay()}
     } else if(TT.state != "start") {TT.state = "inspect"}
   }
 }

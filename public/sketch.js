@@ -84,6 +84,8 @@ function notBuilding() {
     for (let i = 0; i < building_costs.length; i++) {
         if (currentlyDoing == building_costs[i][0]) {
             return (false)
+        } else if (currentlyDoing == "shooting"){
+          return("shooting")
         }
     }
     return (true)

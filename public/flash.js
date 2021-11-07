@@ -6,15 +6,20 @@ class flash{
     this.y2 = y2 * tsize + tsize/2
     this.text = text
     this.life = 100
+    if(text<0){
+      this.norm = 0
+      this.text *= -1
+    } else {this.norm = 1}
   }
 
 
   updraw(){
     strokeWeight(this.life/25 * this.text/50)
-    stroke(230,Math.random()*150+100,Math.random()*20)
+    stroke(this.norm*230,Math.random()*150+100,Math.random()*20)
     line(this.x1, this.y1, this.x2, this.y2)
     textSize(20)
-    stroke(230,this.life*2,0)
+    stroke(this.norm*230,this.life*2,0)
+    fill(0,(this.norm-1)*-255,this.life)
     text(this.text,this.x2-10,this.y2 + this.life/4 - 25)
     this.life -= 2
     noStroke()

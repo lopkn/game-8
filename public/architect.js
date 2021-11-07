@@ -43,7 +43,8 @@ function ArchHidraw(e){
     if(e.team.teamname == TT.teamname){
     text("hp-"+e.hp,newwidth,newheight/2 + 40)
     text("moves-"+e.moveTurns,newwidth,newheight/2 + 60)
-    shopdisplay2()
+    if(myTeamNum == turn && e.team.teamname == TT.teamname){
+    shopdisplay2()}
     } else if(TT.state != "start") {TT.state = "inspect"}}
 }
 
