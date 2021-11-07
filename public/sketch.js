@@ -853,17 +853,20 @@ function update(fupdate, ex, ey) {
     if (cme != "no entity") {
         if (thisSelectedEntity != "no entity" && thisSelectedEntity != null) {
             // console.log(thisSelectedEntity)
-            if (currentlyDoing != 1 && fupdate == "shooting" && thisSelectedArea != null && dit <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name != "medic" && entities[thisSelectedEntity].team.teamname != TT.teamname && entities[cme].moveTurns > 0 || currentlyDoing != 1 && fupdate == "shooting" && thisSelectedArea != null && dist(temp[0], temp[1], selectedBuilding.x, selectedBuilding.y) <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && entities[cme].name == "medic" && entities[thisSelectedEntity].hp < 150 && entities[thisSelectedEntity].team.teamname == TT.teamname && entities[cme].moveTurns > 0) {
-                thismany = int(shootingSeed * (entities[cme].dmg[1] - entities[cme].dmg[0])) + entities[cme].dmg[0]
+            if (currentlyDoing != 1 && fupdate == "shooting" && thisSelectedArea != null && dit <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && selectedBuilding.name != "medic" && entities[thisSelectedEntity].team.teamname != TT.teamname && entities[cme].moveTurns > 0 || currentlyDoing != 1 && fupdate == "shooting" && thisSelectedArea != null && dist(temp[0], temp[1], selectedBuilding.x, selectedBuilding.y) <= selectedBuilding.shootdistance && thisSelectedEntity != "no entity" && selectedBuilding.name == "medic" && entities[thisSelectedEntity].hp < 150 && entities[thisSelectedEntity].team.teamname == TT.teamname && entities[cme].moveTurns > 0) {
+                thismany = int(shootingSeed * (selectedBuilding.dmg[1] - selectedBuilding.dmg[0])) + selectedBuilding.dmg[0]
+                if(selectedBuilding.name == "sniper"){
+                  thismany += int(dit * 2.5)
+                }
                 if (thismany < 0) {
                     console.log("healt " + (-thismany) + " hp!")
                 } else {
                     console.log("dealt " + thismany + " hp!")
                 }
-                flashes.push(new flash(entities[cme].x, entities[cme].y, entities[thisSelectedEntity].x, entities[thisSelectedEntity].y, thismany))
+                flashes.push(new flash(selectedBuilding.x, selectedBuilding.y, entities[thisSelectedEntity].x, entities[thisSelectedEntity].y, thismany))
                 entities[thisSelectedEntity].hp -= thismany
                 TT.money += int(thismany / 2)
-                entities[cme].moveTurns -= 2
+                selectedBuilding.moveTurns -= 2
                 currentlyDoing = 1
                 TT.state = "game"
             }

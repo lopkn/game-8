@@ -1,7 +1,7 @@
 class sniper extends entity{
   constructor(x,y,team){
     super(x,y,team,'sniper');
-    this.hp = 300
+    this.hp = 90
     this.moveTurns = 3
     // this.name = "tank"
     this.MaxTurns = 2
@@ -9,7 +9,7 @@ class sniper extends entity{
     this.moveable = true
     this.shootable =true
     this.sight = 6
-    this.dmg = [20,60]
+    this.dmg = [35,45]
   }
   draw(){
     SniperDraw(this)

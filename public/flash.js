@@ -5,11 +5,11 @@ class flash{
     this.y1 = y1 * tsize + tsize/2
     this.y2 = y2 * tsize + tsize/2
     this.text = text
-    this.life = 100
     if(text<0){
       this.norm = 0
       this.text *= -1
     } else {this.norm = 1}
+    this.life = 100 + text/10
   }
 
 

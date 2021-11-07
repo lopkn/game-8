@@ -45,7 +45,7 @@ function TankHidraw(e){
     noStroke()
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
-    if(myTeamNum == turn){
+    if(myTeamNum == turn&& e.team.teamname == TT.teamname){
     text("shield-"+e.hp,newwidth,newheight/2 + 40)
     text("moves-"+e.moveTurns,newwidth,newheight/2 + 60)
     shopdisplay4()
