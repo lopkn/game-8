@@ -750,8 +750,11 @@ function update(fupdate,ex,ey){
     
     //ifbuild
       temp = tiletopos(prevSelectedArea)
-    //build units
-    dit = dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
+  //build units
+    try {
+     var dit = dist(temOp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
+    } catch(error){
+    }
     if(fupdate == "soldier" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity"){
       entities.push(new soldier(temp[0],temp[1],TT))
       currentlyDoing = 1
