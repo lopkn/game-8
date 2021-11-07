@@ -30,7 +30,13 @@ function abActions(){
   } else if(currentlyDoing == "moving"){
     l.html(" you're trying to move your unit. click a block directly adjacent to the unit to move.<br> if you have a keyboard, selecting the unit and pressing WASD also moves the unit!<br> make sure to press the exit button after you're done moving!")
   } else if(currentlyDoing == "soldier"){
-    l.html(" you're trying to make a soldier. click a tile in a 2 block radius of your factory to build.")
+    if(selectedBuilding.name == "factory"){
+    l.html(" you're trying to deploy a soldier. click a tile in a 2 block radius of your factory to build.")}
+    else if(selectedBuilding.name == "tank"){
+      l.html(" you're trying to make a soldier. click a tile in a 1 block radius of your tank to build.")
+    }
+
+
   } else if(currentlyDoing == "mine"){
     l.html(" you're trying to build a mine. click a tile in a 1 block radius of your architect to build.<br> (the tile has to be a mountain tile)")
   } else if(currentlyDoing == "tank"){
@@ -360,6 +366,14 @@ function action3(){
       TT.money -= 200
        currentlyDoing = "mine"
       console.log("building new:mine")
+    }
+    
+  }else if(selectedBuilding.name == "tank" && currentlyDoing == 1){
+   
+    if(TT.money >= 200){
+      TT.money -= 200
+       currentlyDoing = "soldier"
+      console.log("making new:soldier")
     }
     
   }else if(selectedBuilding.name == "soldier" && currentlyDoing == 1){
@@ -755,7 +769,7 @@ function update(fupdate,ex,ey){
      var dit = dist(temp[0],temp[1],selectedBuilding.x,selectedBuilding.y)
     } catch(error){
     }
-    if(fupdate == "soldier" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity"){
+    if(fupdate == "soldier" && thisSelectedArea != null &&((selectedBuilding.name == "factory" && dit < 2.1)||(selectedBuilding.name == "tank" && dit < 1.1) )&& dit != 0 && cme == "no entity"){
       entities.push(new soldier(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
