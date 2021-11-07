@@ -783,7 +783,7 @@ function update(fupdate,ex,ey){
       TT.state = "game"
     }
     if(fupdate == "trap" && thisSelectedArea != null && dit < 2.1 && dit != 0 && cme == "no entity" ){
-      entities.push(new trap(temp[0],temp[1],TT))
+      entities.splice(0,0,new trap(temp[0],temp[1],TT))
       currentlyDoing = 1
       TT.state = "game"
     }
