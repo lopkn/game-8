@@ -48,7 +48,7 @@ function FactoryHidraw(e){
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
     }
-    if(e.team.teamname == TT.teamname){
+    if(myTeamNum == turn){
       if(TT.state == "game"){
       TT.state = "building"}
       text("hp-"+e.hp,newwidth,newheight/2 + 40)
@@ -63,4 +63,5 @@ function shopdisplay(){
   text("architect:250g",newwidth,newheight/2 + ttx + 20)
   text("tank:250g",newwidth,newheight/2 + ttx + 40)
   text("medic:250g",newwidth,newheight/2 + ttx + 60)
+  text("sniper:300g",newwidth,newheight/2 + ttx + 80)
 }

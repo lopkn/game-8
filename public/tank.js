@@ -38,15 +38,21 @@ function TankHidraw(e){
     selectedBuilding = e
   }
         if(tiles[prevSelectedArea].light == 1){
-    stroke(e.moveturns * 127)
+    stroke(e.moveTurns * 127)
     fill(e.team.color)
     ellipse(e.x*tsize+2,e.y*tsize+2,5)
     line(newwidth,newheight/2,width,newheight/2)
     noStroke()
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
-    if(e.team.teamname == TT.teamname){
+    if(myTeamNum == turn){
     text("shield-"+e.hp,newwidth,newheight/2 + 40)
     text("moves-"+e.moveTurns,newwidth,newheight/2 + 60)
+    shopdisplay4()
     }}
+}
+
+function shopdisplay4(){
+  let ttx = 100
+  text("soldier:200g",newwidth,newheight/2 + ttx)
 }
