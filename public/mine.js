@@ -47,7 +47,7 @@ function MineHidraw(e){
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)}
     
-    if(e.team.teamname == TT.teamname){
+    if(e.team.teamname == TT.teamname&&myTeamNum == turn){
       TT.state = "game"
       text("hp-"+e.hp,newwidth,newheight/2 + 40)
     } else if(TT.state != "start") {TT.state = "inspect"}

@@ -40,7 +40,7 @@ function ArchHidraw(e){
     noStroke()
     fill("#5F5FFF")
     text(e.team.teamname+"-"+e.name,newwidth,newheight/2 + 20)
-    if(e.team.teamname == TT.teamname){
+    if(e.team.teamname == TT.teamname&&myTeamNum == turn){
     text("hp-"+e.hp,newwidth,newheight/2 + 40)
     text("moves-"+e.moveTurns,newwidth,newheight/2 + 60)
     if(myTeamNum == turn && e.team.teamname == TT.teamname){
