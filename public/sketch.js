@@ -11,7 +11,7 @@ building_costs = [
 
 p5.disableFriendlyErrors = true;
 
-
+backselectedtile = 0
 
 
 function abActions() {
@@ -230,6 +230,12 @@ function mousetotile(ex, ey) {
 
 function tiletopos(e) {
     return ([e - int(e / (newwidth / tsize)) * (newwidth / tsize), int(e / (newheight / tsize))])
+}
+
+
+function back(){
+  let temp = tiletopos(backselectedtile)
+  update(currentlyDoing,temp[0]*tsize+2,temp[1]*tsize+2)
 }
 
 
@@ -505,6 +511,8 @@ function exit() {
     } else if (currentlyDoing == "sniper") {
         currentlyDoing = 1
         TT.money += 300
+    } else if (selectedBuilding.team.teamname == TT.teamname){
+      TT.state = "game"
     }
 
 
@@ -549,6 +557,12 @@ function kd(num) {
     }
     if (num == 68) {
         kd68()
+    }
+    if (num == 69) {
+        exit()
+    }
+    if (num == 90) {
+        back()
     }
 }
 
@@ -933,7 +947,9 @@ function update(fupdate, ex, ey) {
         l.html("wait for the others to finish thier moves")
     }
 
-
+    if(thisSelectedArea != backselectedtile){
+      backselectedtile = thisSelectedArea
+    }
 }
 
 clickPing = 0
@@ -982,6 +998,14 @@ function draw() {
             }
             if (keyIsDown(83)) {
                 socket.emit('toserkd', 83);
+                keywait = needwaittime
+            }
+            if (keyIsDown(69)) {
+                socket.emit('toserkd', 69);
+                keywait = needwaittime
+            }
+            if (keyIsDown(90)) {
+                socket.emit('toserkd', 90);
                 keywait = needwaittime
             }
         }
