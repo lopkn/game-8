@@ -33,7 +33,7 @@ function ArchHidraw(e){
     selectedBuilding = e
   }
         if(tiles[prevSelectedArea].light == 1){
-    stroke(e.moveturns * 127)
+    stroke(e.moveTurns * 127)
     fill(e.team.color)
     ellipse(e.x*tsize+2,e.y*tsize+2,5)
     line(newwidth,newheight/2,width,newheight/2)
