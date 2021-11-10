@@ -12,6 +12,7 @@ building_costs = [
 p5.disableFriendlyErrors = true;
 
 backselectedtile = 0
+tileBack = 1
 
 
 function abActions() {
@@ -564,6 +565,21 @@ function kd(num) {
     if (num == 90) {
         back()
     }
+    if (num == 49) {
+      action1()
+    }
+    if (num == 50) {
+      action2()
+    }
+    if (num == 51) {
+      action3()
+    }
+    if (num == 52) {
+      action4()
+    }
+    if (num == 53) {
+      action5()
+    }
 }
 
 function messageNEWCON(id) {
@@ -947,8 +963,9 @@ function update(fupdate, ex, ey) {
         l.html("wait for the others to finish thier moves")
     }
 
-    if(thisSelectedArea != backselectedtile){
-      backselectedtile = thisSelectedArea
+    if(thisSelectedArea != tileBack && thisSelectedArea != null){
+      backselectedtile = tileBack
+      tileBack = thisSelectedArea
     }
 }
 
@@ -1006,6 +1023,26 @@ function draw() {
             }
             if (keyIsDown(90)) {
                 socket.emit('toserkd', 90);
+                keywait = needwaittime
+            }
+            if (keyIsDown(49)) {
+                socket.emit('toserkd', 49);
+                keywait = needwaittime
+            }
+            if (keyIsDown(50)) {
+                socket.emit('toserkd', 50);
+                keywait = needwaittime
+            }
+            if (keyIsDown(51)) {
+                socket.emit('toserkd', 51);
+                keywait = needwaittime
+            }
+            if (keyIsDown(52)) {
+                socket.emit('toserkd', 52);
+                keywait = needwaittime
+            }
+            if (keyIsDown(53)) {
+                socket.emit('toserkd', 53);
                 keywait = needwaittime
             }
         }
