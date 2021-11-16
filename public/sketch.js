@@ -688,6 +688,17 @@ function setup() {
     BD = createButton('decoy');
     BD.position(2000, 1500)
 
+    keyinput = createInput();
+    keyinput.position(newwidth + 220, 65);
+
+    INPbutton = createButton('submit');
+    INPbutton.position(keyinput.x + keyinput.width, 65);
+    INPbutton.mousePressed(textInput);
+
+    INPout = createP("help and minigames here!")
+    INPout.position(keyinput.x, 85)
+    INPout.style("color","white")
+
     l = createP("button actions displayed here!\nclick on any act button to join that team, then press start!")
     l.position(50, newheight + 50)
     l.style('color', 'white')
